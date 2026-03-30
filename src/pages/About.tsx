@@ -10,8 +10,7 @@ export default function About() {
     <div className="section-padding">
       <motion.div
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        animate="visible"
         variants={fadeUp}
         className="mb-32"
       >
@@ -44,8 +43,7 @@ export default function About() {
 
       <motion.div
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        animate="visible"
         variants={fadeUp}
       >
         <h3 className="label-text mb-8 block">Our Values</h3>

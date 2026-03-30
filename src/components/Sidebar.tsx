@@ -21,7 +21,7 @@ const Sidebar = () => {
       {/* Mobile Hamburger Header */}
       <div className="md:hidden fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-borderLight p-4 flex justify-between items-center transition-colors">
         <Link to="home" spy={true} smooth={true} offset={0} duration={800} className="flex items-center cursor-pointer">
-          <img src="/logo.png" alt="Heesh Visuals Logo" className="h-8 w-auto object-contain" />
+          <img src="/logonobg.png" alt="Heesh Visuals Logo" className="h-10 w-auto object-contain" />
         </Link>
         <button onClick={() => setIsOpen(!isOpen)} className="text-textMain focus:outline-none">
           {isOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
@@ -39,8 +39,8 @@ const Sidebar = () => {
             className={`fixed top-0 left-0 h-screen bg-card border-r border-borderLight z-40 w-64 md:w-[280px] flex flex-col justify-between py-12 px-10 ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
           >
             <div>
-              <div className="hidden md:flex mb-20 items-center justify-start">
-                <img src="/logo.png" alt="Heesh Visuals Logo" className="h-16 w-auto object-contain" />
+              <div className="hidden md:flex mb-12 items-center justify-start">
+                <img src="/logonobg.png" alt="Heesh Visuals Logo" className="h-24 w-auto object-contain" />
               </div>
               
               <nav className="flex flex-col space-y-6 md:mt-0 mt-16">

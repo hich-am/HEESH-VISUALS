@@ -1,5 +1,4 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 const steps = [
   { 
@@ -25,15 +24,11 @@ const steps = [
 ];
 
 export default function Process() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <div className="section-padding">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="mb-16 md:mb-24 max-w-3xl"
       >
@@ -44,13 +39,13 @@ export default function Process() {
         </p>
       </motion.div>
 
-      <div ref={ref} className="relative max-w-5xl mx-auto">
+      <div className="relative max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 lg:gap-x-24">
           {steps.map((step, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="flex flex-col relative"
             >

@@ -21,8 +21,7 @@ export default function Portfolio() {
     <div className="section-padding">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="mb-16 md:mb-24 max-w-3xl"
       >
@@ -35,8 +34,7 @@ export default function Portfolio() {
 
       <motion.div
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
+        animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.8 }}
         className="w-full relative min-h-[700px] mt-8 overflow-visible"
       >
