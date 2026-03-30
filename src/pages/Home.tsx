@@ -1,53 +1,68 @@
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowDown } from 'lucide-react';
+import { Link } from 'react-scroll';
 
 export default function Home() {
   return (
-    <div className="min-h-[80vh] flex flex-col justify-center relative">
-      {/* Abstract Background Element */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[100px] pointer-events-none -z-10" />
-
+    <div className="min-h-[90vh] flex flex-col justify-center relative pt-24 pb-12">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-w-4xl"
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="inline-block px-4 py-1.5 mb-8 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-sm font-medium tracking-wide uppercase"
+          className="label-text mb-8 inline-block"
         >
           Heesh Visuals Studio
         </motion.div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-display font-black leading-tight md:leading-[1.1] mb-8 text-white">
+        <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-sans font-medium leading-[1.1] mb-8 text-textMain tracking-tight">
           Creative Strategies.<br />
-          <span className="text-gray-400">Powerful Visuals.</span>
+          <span className="text-textMuted font-light">Powerful Visuals.</span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mb-12 leading-relaxed">
+        <p className="text-xl md:text-2xl text-textMuted max-w-2xl mb-16 leading-relaxed font-light">
           Empowering startups and businesses with smart, striking design solutions that make you stand out in the market.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6">
+        <div className="flex flex-col sm:flex-row gap-6 items-start">
           <Link
-            to="/portfolio"
-            className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-darker font-bold uppercase tracking-wider overflow-hidden rounded-sm transition-transform hover:scale-105 duration-300"
+            to="portfolio"
+            spy={true}
+            smooth={true}
+            offset={-50}
+            duration={800}
+            className="cursor-pointer group flex items-center justify-center px-10 py-4 bg-textMain text-white font-medium rounded-full hover:bg-black transition-colors duration-300"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              View Our Work <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
+            Explore Work
           </Link>
           <Link
-            to="/contact"
-            className="group relative inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-bold uppercase tracking-wider rounded-sm hover:bg-white/5 transition-colors duration-300"
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={-50}
+            duration={800}
+            className="cursor-pointer group flex items-center justify-center px-10 py-4 bg-transparent border border-borderLight text-textMain font-medium rounded-full hover:border-textMuted hover:bg-white transition-colors duration-300"
           >
-            Start a Project
+            Get in touch
           </Link>
         </div>
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ delay: 0.8, duration: 1 }}
+        className="mt-24 md:absolute bottom-12 left-0"
+      >
+        <Link to="about" spy={true} smooth={true} offset={-50} duration={800} className="cursor-pointer flex flex-col items-center gap-3 text-textMuted hover:text-accent transition-colors w-fit">
+          <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Scroll</span>
+          <ArrowDown size={18} strokeWidth={1.5} className="animate-bounce" />
+        </Link>
       </motion.div>
     </div>
   );

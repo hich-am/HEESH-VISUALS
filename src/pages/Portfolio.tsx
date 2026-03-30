@@ -18,24 +18,27 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="pb-20">
+    <div className="section-padding">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
         className="mb-16 md:mb-24 max-w-3xl"
       >
-        <h1 className="text-5xl md:text-7xl font-display font-black mb-8">Selected Work</h1>
-        <p className="text-xl md:text-2xl text-gray-400 leading-relaxed">
+        <span className="label-text mb-6 block">Portfolio</span>
+        <h2 className="text-4xl md:text-5xl font-sans font-medium mb-8 leading-tight tracking-tight">Selected Work</h2>
+        <p className="text-xl text-textMuted font-light leading-relaxed">
           A showcase of our latest creative strategies and powerful visuals straight from our Instagram feed.
         </p>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-        className="w-full bg-white/5 border border-white/10 rounded-sm relative overflow-hidden min-h-[500px]"
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="w-full relative min-h-[700px] mt-8 overflow-visible"
       >
         {/* Elfsight Instagram Widget */}
         <div className="elfsight-app-602a4def-c686-4662-aa87-edf09693e1d0 w-full h-full" data-elfsight-app-lazy></div>

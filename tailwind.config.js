@@ -7,9 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        dark: "#0a0a0a",
-        darker: "#050505",
-        accent: "#ffffff",
+        background: "#FFFFFF",
+        card: "#FFFFFF",
+        textMain: "#000000",
+        textMuted: "#555555", 
+        accent: "#00674F",
+        accent2: "#A3B18A",
+        accent3: "#E9C46A",
+        borderLight: "#E5E5E5",
       },
       fontFamily: {
         sans: ['"Inter"', 'sans-serif'],

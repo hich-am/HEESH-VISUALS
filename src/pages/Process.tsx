@@ -29,44 +29,36 @@ export default function Process() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <div className="pb-20">
+    <div className="section-padding">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
         className="mb-16 md:mb-24 max-w-3xl"
       >
-        <h1 className="text-5xl md:text-7xl font-display font-black mb-8 leading-tight">Our Process</h1>
-        <p className="text-xl md:text-2xl text-gray-400 leading-relaxed">
+        <span className="label-text mb-6 block">Methodology</span>
+        <h2 className="text-4xl md:text-5xl font-sans font-medium mb-8 leading-tight tracking-tight">Our Process</h2>
+        <p className="text-xl text-textMuted font-light leading-relaxed">
           A streamlined, collaborative methodology designed to transform your vision into reality.
         </p>
       </motion.div>
 
-      <div ref={ref} className="relative max-w-4xl mx-auto py-10">
-        {/* Connecting Line hidden on mobile */}
-        <div className="absolute left-[39px] md:left-1/2 top-0 bottom-0 w-px bg-white/10 hidden md:block -translate-x-1/2" />
-
-        <div className="space-y-16 md:space-y-32">
+      <div ref={ref} className="relative max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 lg:gap-x-24">
           {steps.map((step, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 relative z-10 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="flex flex-col relative"
             >
-              <div className={`w-full md:w-[45%] ${index % 2 !== 0 ? 'md:text-left' : 'md:text-right'} order-2 md:order-none bg-white/5 md:bg-transparent p-6 md:p-0 rounded-sm border border-white/5 md:border-none hover:bg-white/10 md:hover:bg-transparent transition-colors`}>
-                <h3 className="text-3xl font-bold font-display tracking-tight text-white mb-4">{step.title}</h3>
-                <p className="text-gray-400 text-lg leading-relaxed">{step.description}</p>
+              <div className="mb-6 pb-6 border-b border-borderLight flex justify-between items-end">
+                <h3 className="text-2xl font-medium tracking-tight text-textMain">{step.title}</h3>
+                <span className="text-sm font-bold tracking-widest text-accent font-sans">{step.id}</span>
               </div>
-              
-              <div className="relative flex items-center justify-center order-1 md:order-none z-10 w-full md:w-[10%] shrink-0">
-                <div className="w-20 h-20 rounded-full bg-[#050505] border-2 border-white/20 flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.05)] mx-auto">
-                  <span className="text-2xl font-display font-black text-white">{step.id}</span>
-                </div>
-              </div>
-              
-              <div className="hidden md:block w-full md:w-[45%]" />
+              <p className="text-textMuted text-lg leading-relaxed font-light">{step.description}</p>
             </motion.div>
           ))}
         </div>
