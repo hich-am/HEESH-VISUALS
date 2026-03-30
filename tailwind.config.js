@@ -11,7 +11,7 @@ export default {
         card: "#FFFFFF",
         textMain: "#000000",
         textMuted: "#555555", 
-        accent: "#00674F",
+        accent: "#0E7586",
         accent2: "#A3B18A",
         accent3: "#E9C46A",
         borderLight: "#E5E5E5",

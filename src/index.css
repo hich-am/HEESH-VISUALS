@@ -20,7 +20,7 @@
   }
   .label-text {
     @apply text-[11px] font-bold tracking-[0.2em] uppercase;
-    color: #00674F;
+    color: #0E7586;
   }
 }
 

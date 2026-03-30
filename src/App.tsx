@@ -11,15 +11,18 @@ function App() {
     <Layout>
       <div className="flex flex-col gap-y-16 md:gap-y-32">
         <section id="home"><Home /></section>
-        <section id="about"><About /></section>
-        <div className="w-full h-px bg-borderLight max-w-4xl mx-auto" />
-        <section id="services"><Services /></section>
-        <div className="w-full h-px bg-borderLight max-w-4xl mx-auto" />
-        <section id="portfolio"><Portfolio /></section>
-        <div className="w-full h-px bg-borderLight max-w-4xl mx-auto" />
-        <section id="process"><Process /></section>
-        <div className="w-full h-px bg-borderLight max-w-4xl mx-auto" />
-        <section id="contact"><Contact /></section>
+        
+        <div className="max-w-[1200px] mx-auto px-4 md:px-8 w-full flex flex-col gap-y-16 md:gap-y-32">
+          <section id="about"><About /></section>
+          <div className="w-full h-px bg-borderLight max-w-4xl mx-auto" />
+          <section id="services"><Services /></section>
+          <div className="w-full h-px bg-borderLight max-w-4xl mx-auto" />
+          <section id="portfolio"><Portfolio /></section>
+          <div className="w-full h-px bg-borderLight max-w-4xl mx-auto" />
+          <section id="process"><Process /></section>
+          <div className="w-full h-px bg-borderLight max-w-4xl mx-auto" />
+          <section id="contact"><Contact /></section>
+        </div>
       </div>
     </Layout>
   );
