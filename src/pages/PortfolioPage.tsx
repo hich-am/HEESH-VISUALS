@@ -74,7 +74,7 @@ export default function PortfolioPage() {
       
       {/* Bottom Padding */}
       <div className="py-24 text-center">
-        <p className="text-sm text-textMuted font-light">More work coming soon.</p>
+        <p className="text-sm text-textMuted font-light">An always Expanding Library.</p>
       </div>
     </div>
   );
