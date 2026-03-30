@@ -54,10 +54,7 @@ export default function PortfolioPage() {
 
             {/* Caption Section (Fixed thin bar, no horizontal separation between neighbors) */}
             <div className="py-2 md:py-3 px-6 text-center bg-white flex flex-col justify-center">
-              <h3 
-                className="text-sm md:text-[15px] text-[#1a3336] font-medium leading-tight"
-                style={{ fontFamily: "'DM Serif Display', Georgia, serif" }}
-              >
+              <h3 className="text-sm md:text-[15px] text-[#1a3336] font-medium leading-tight uppercase tracking-tight">
                 {project.title}
               </h3>
               <p className="text-[8px] font-bold tracking-[0.25em] text-[#6b8a8d] uppercase leading-none mt-1">
