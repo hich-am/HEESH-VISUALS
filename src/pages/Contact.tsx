@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
-import { FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaBehance } from 'react-icons/fa';
 
 export default function Contact() {
   return (
@@ -33,8 +33,8 @@ export default function Contact() {
               </div>
               <div className="pt-1">
                 <h3 className="label-text mb-2">Email</h3>
-                <a href="mailto:hichamst9.5@outlook.com" className="text-lg md:text-xl font-light hover:text-accent transition-colors text-textMain break-all">
-                  hichamst9.5@outlook.com
+                <a href="mailto:heeshdesign@gmail.com" className="text-lg md:text-xl font-light hover:text-accent transition-colors text-textMain break-all">
+                  heeshdesign@gmail.com
                 </a>
               </div>
             </div>
@@ -66,13 +66,12 @@ export default function Contact() {
             <div className="pt-8 border-t border-borderLight">
               <h3 className="label-text mb-6">Connect & Messaging</h3>
               <div className="flex flex-wrap items-center gap-4">
-                <a href="#" className="py-3 px-5 bg-white border border-borderLight rounded-full hover:border-accent hover:text-accent transition-all flex items-center gap-3 text-textMuted shadow-sm hover:shadow-md">
+                <a href="https://api.whatsapp.com/send/?phone=213676372031&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="py-3 px-5 bg-white border border-borderLight rounded-full hover:border-accent hover:text-accent transition-all flex items-center gap-3 text-textMuted shadow-sm hover:shadow-md">
                   <MessageCircle className="w-4 h-4" strokeWidth={1.5} /> <span className="text-sm font-medium">WhatsApp</span>
                 </a>
-                <a href="#" className="p-3.5 bg-white border border-borderLight rounded-full text-textMuted hover:border-accent hover:text-accent transition-all shadow-sm hover:shadow-md"><FaInstagram className="w-4 h-4" /></a>
-                <a href="#" className="p-3.5 bg-white border border-borderLight rounded-full text-textMuted hover:border-accent hover:text-accent transition-all shadow-sm hover:shadow-md"><FaLinkedin className="w-4 h-4" /></a>
-                <a href="#" className="p-3.5 bg-white border border-borderLight rounded-full text-textMuted hover:border-accent hover:text-accent transition-all shadow-sm hover:shadow-md"><FaGithub className="w-4 h-4" /></a>
-                <a href="#" className="p-3.5 bg-white border border-borderLight rounded-full text-textMuted hover:border-accent hover:text-accent transition-all font-display font-medium text-sm w-[42px] h-[42px] flex items-center justify-center shadow-sm hover:shadow-md">Bē</a>
+                <a href="https://instagram.com/heesh_visuals" target="_blank" rel="noopener noreferrer" className="p-3.5 bg-white border border-borderLight rounded-full text-textMuted hover:border-accent hover:text-accent transition-all shadow-sm hover:shadow-md"><FaInstagram className="w-4 h-4" /></a>
+                <a href="https://www.facebook.com/izan.massi" target="_blank" rel="noopener noreferrer" className="p-3.5 bg-white border border-borderLight rounded-full text-textMuted hover:border-accent hover:text-accent transition-all shadow-sm hover:shadow-md"><FaFacebook className="w-4 h-4" /></a>
+                <a href="https://behance.net/hichammanseur1" target="_blank" rel="noopener noreferrer" className="p-3.5 bg-white border border-borderLight rounded-full text-textMuted hover:border-accent hover:text-accent transition-all shadow-sm hover:shadow-md"><FaBehance className="w-4 h-4" /></a>
               </div>
             </div>
           </div>

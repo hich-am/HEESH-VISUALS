@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaBehance } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
 
@@ -64,9 +64,9 @@ const Sidebar = () => {
 
             {/* Social Icons */}
             <div className="flex items-center space-x-5 text-textMuted mt-10">
-              <a href="#" className="hover:text-accent transition-colors duration-300"><FaInstagram size={18} /></a>
-              <a href="#" className="hover:text-accent transition-colors duration-300"><FaLinkedin size={18} /></a>
-              <a href="#" className="hover:text-accent transition-colors duration-300"><FaGithub size={18} /></a>
+              <a href="https://instagram.com/heesh_visuals" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors duration-300"><FaInstagram size={18} /></a>
+              <a href="https://www.facebook.com/izan.massi" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors duration-300"><FaFacebook size={18} /></a>
+              <a href="https://behance.net/hichammanseur1" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors duration-300"><FaBehance size={18} /></a>
             </div>
           </motion.div>
         )}
