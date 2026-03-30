@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { FaInstagram, FaFacebook, FaBehance } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink, scroller } from 'react-scroll';
+import { useLocation, useNavigate, Link as RouterLink } from 'react-router-dom';
 
 const navLinks = [
   { name: 'Home', to: 'home' },
@@ -15,14 +16,52 @@ const navLinks = [
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleNavClick = (to: string) => {
+    setIsOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation and then scroll
+      setTimeout(() => {
+        scroller.scrollTo(to, {
+          smooth: true,
+          duration: 800,
+          offset: 0,
+        });
+      }, 100);
+    }
+  };
+
+  const navItemClass = "cursor-pointer text-textMuted hover:text-textMain text-sm transition-colors duration-300 w-fit pb-1 border-b-2 border-transparent hover:border-accent/30";
 
   return (
     <>
       {/* Mobile Hamburger Header */}
       <div className="md:hidden fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-borderLight p-4 flex justify-between items-center transition-colors">
-        <Link to="home" spy={true} smooth={true} offset={0} duration={800} className="flex items-center cursor-pointer">
+        <button 
+          onClick={() => {
+            if (location.pathname === '/') {
+              scroller.scrollTo('home', { smooth: true, duration: 800 });
+            } else {
+              navigate('/');
+            }
+          }}
+          className="flex items-center cursor-pointer"
+        >
           <img src="/logonobg.png" alt="Heesh Visuals Logo" className="h-10 w-auto object-contain" />
-        </Link>
+        </button>
         <button onClick={() => setIsOpen(!isOpen)} className="text-textMain focus:outline-none">
           {isOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
         </button>
@@ -30,9 +69,9 @@ const Sidebar = () => {
 
       {/* Sidebar Content */}
       <AnimatePresence>
-        {(isOpen || window.innerWidth >= 768) && (
+        {(isOpen || !isMobile) && (
           <motion.div 
-            initial={{ x: -300 }}
+            initial={isMobile ? { x: -300 } : false}
             animate={{ x: 0 }}
             exit={{ x: -300 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -41,10 +80,10 @@ const Sidebar = () => {
           >
             <div className="flex flex-col h-full">
               {/* Logo + Tagline */}
-              <div className="hidden md:flex flex-col mb-10 items-center">
+              <RouterLink to="/" onClick={() => setIsOpen(false)} className="hidden md:flex flex-col mb-10 items-center hover:opacity-80 transition-opacity">
                 <img src="/logonobg.png" alt="Heesh Visuals Logo" className="h-24 w-auto object-contain mb-3" />
                 <span className="text-[10px] font-bold tracking-[0.22em] uppercase text-accent/80">Creative Design Studio</span>
-              </div>
+              </RouterLink>
 
               {/* Vertical Divider */}
               <div className="hidden md:flex items-center gap-3 mb-8">
@@ -55,19 +94,29 @@ const Sidebar = () => {
               {/* Nav Links */}
               <nav className="flex flex-col space-y-6 md:mt-0 mt-16 flex-1">
                 {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.to}
-                    spy={true}
-                    smooth={true}
-                    offset={0}
-                    duration={800}
-                    onClick={() => setIsOpen(false)}
-                    activeClass="!text-accent font-medium"
-                    className="cursor-pointer text-textMuted hover:text-textMain text-sm transition-colors duration-300 w-fit pb-1 border-b-2 border-transparent hover:border-accent/30"
-                  >
-                    {link.name}
-                  </Link>
+                  location.pathname === '/' ? (
+                    <ScrollLink
+                      key={link.name}
+                      to={link.to}
+                      spy={true}
+                      smooth={true}
+                      offset={0}
+                      duration={800}
+                      onClick={() => setIsOpen(false)}
+                      activeClass="!text-accent font-medium border-accent/40"
+                      className={navItemClass}
+                    >
+                      {link.name}
+                    </ScrollLink>
+                  ) : (
+                    <button
+                      key={link.name}
+                      onClick={() => handleNavClick(link.to)}
+                      className={`${navItemClass} text-left`}
+                    >
+                      {link.name}
+                    </button>
+                  )
                 ))}
               </nav>
 

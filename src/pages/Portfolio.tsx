@@ -110,7 +110,10 @@ export default function Portfolio() {
           className="flex justify-center"
         >
           <button
-            onClick={() => navigate('/portfolio')}
+            onClick={() => {
+              navigate('/portfolio');
+              window.scrollTo(0, 0);
+            }}
             className="group inline-flex items-center gap-3 px-10 py-4 rounded-full border border-textMain text-textMain font-medium text-sm hover:bg-textMain hover:text-white transition-all duration-300"
           >
             See full portfolio
