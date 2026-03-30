@@ -26,7 +26,7 @@ function ProjectCard({ project, delay }: { project: typeof projects[0]; delay: n
     >
       {/* Image placeholder */}
       <div
-        className={`w-full ${aspectClass[project.aspect]} rounded-[18px] overflow-hidden bg-[#E2E2E2]`}
+        className={`w-full ${aspectClass[project.aspect]} rounded-none overflow-hidden bg-[#E2E2E2]`}
       >
         {/* Replace the div below with <img> when ready */}
         <div className="w-full h-full bg-gradient-to-br from-[#E8E8E8] to-[#D4D4D4]" />

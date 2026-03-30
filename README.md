@@ -1,73 +1,74 @@
-# React + TypeScript + Vite
+# Heesh Visuals 🎨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, high-density React SPA portfolio designed for an editorial, minimalist aesthetic. It features smooth scrolling, tailored animations, and a responsive modular grid layout.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Modern Tech Stack**: Built with React 19, TypeScript, and Vite.
+- **Styling**: Tailored, responsive layout using Tailwind CSS with custom global CSS tokens for consistent theming.
+- **Micro-Animations**: Uses `framer-motion` for smooth, staggered page transitions and hover effects.
+- **Multi-Route Navigation**: Seamless client-side routing managed by `react-router-dom`, featuring a sticky contextual sidebar.
+- **High-Density Layout**: An "editorial" aesthetic featuring very tight margins, tiny minimalist typography, and a 3-column masonry/modular portfolio grid.
+- **Design Tokens**: A robust `--color-accent` `#0E7586` design token system built using CSS variables to handle opacity modifiers consistently across the application.
 
-## React Compiler
+## 🚀 Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+You need Node.js and npm (or yarn/pnpm) installed.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Clone the repository and navigate to the project directory:
+   ```bash
+   git clone <repository-url>
+   cd HEESH-VISUALS
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to the local URL provided by Vite (usually `http://localhost:5173`).
+
+## 🛠️ Tech Stack & Dependencies
+
+- **Framework**: React 19
+- **Build Tool**: Vite
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v3
+- **Routing**: `react-router-dom`
+- **Animations**: `framer-motion`
+- **Scrolling**: `react-scroll`
+- **Icons**: `lucide-react`, `react-icons`
+
+## 📁 Project Structure
+
+```
+src/
+├── components/    # Reusable UI components (Sidebar, Footer, Layout)
+├── pages/         # Top-level page components (Home, Portfolio, About, Services, Process, Contact)
+├── App.tsx        # Main application component & routing schema
+├── index.css      # Global CSS variables and Tailwind layer styles
+└── main.tsx       # Application entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Token System
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The project's brand color is centralized into a robust Tailwind CSS opacity-supporting token system.
+The master teal is defined in `src/index.css`:
+```css
+:root {
+  --color-accent: 14 117 134; /* #0E7586 */
+}
 ```
+
+## 📝 License
+
+This project is proprietary. All content and visual assets belong to Heesh Visuals.
