@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design Tokens ────────────────────────────────────────────────────────── */
+:root {
+  /* Brand teal — used as RGB triplets so Tailwind opacity modifiers work */
+  --color-accent:      14 117 134;   /* #0E7586 */
+  --color-text-main:   0   0   0;    /* #000000 */
+  --color-text-muted:  85  85  85;   /* #555555 */
+  --color-bg:          255 255 255;  /* #FFFFFF */
+  --color-border:      229 229 229;  /* #E5E5E5 */
+}
+
 @layer base {
   body {
     @apply bg-background text-textMain overflow-x-hidden antialiased;
@@ -18,9 +28,9 @@
   .card-style {
     @apply bg-card rounded-2xl border border-borderLight shadow-[0_8px_30px_rgba(0,0,0,0.03)] p-8 md:p-10 transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)];
   }
+  /* Label: always solid brand teal */
   .label-text {
-    @apply text-[11px] font-bold tracking-[0.2em] uppercase;
-    color: #0E7586;
+    @apply text-[11px] font-bold tracking-[0.2em] uppercase text-accent;
   }
 }
 

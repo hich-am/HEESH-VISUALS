@@ -82,13 +82,13 @@ const Sidebar = () => {
               {/* Logo + Tagline */}
               <RouterLink to="/" onClick={() => setIsOpen(false)} className="hidden md:flex flex-col mb-10 items-center hover:opacity-80 transition-opacity">
                 <img src="/logonobg.png" alt="Heesh Visuals Logo" className="h-24 w-auto object-contain mb-3" />
-                <span className="text-[10px] font-bold tracking-[0.22em] uppercase text-accent/80">Creative Design Studio</span>
+                <span className="text-[10px] font-bold tracking-[0.22em] uppercase text-accent">Creative Design Studio</span>
               </RouterLink>
 
               {/* Vertical Divider */}
               <div className="hidden md:flex items-center gap-3 mb-8">
-                <div className="w-6 h-px bg-accent/40"></div>
-                <div className="w-1 h-5 bg-accent/30 rounded-full"></div>
+                <div className="w-6 h-px bg-borderLight"></div>
+                <div className="w-1 h-5 bg-borderLight rounded-full"></div>
               </div>
 
               {/* Nav Links */}
@@ -132,10 +132,10 @@ const Sidebar = () => {
                 </a>
 
                 {/* Social Icons */}
-                <div className="flex items-center space-x-4 text-textMuted">
-                  <a href="https://instagram.com/heesh_visuals" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors duration-300"><FaInstagram size={17} /></a>
-                  <a href="https://www.facebook.com/izan.massi" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors duration-300"><FaFacebook size={17} /></a>
-                  <a href="https://behance.net/hichammanseur1" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors duration-300"><FaBehance size={17} /></a>
+                <div className="flex items-center space-x-4 text-accent">
+                  <a href="https://instagram.com/heesh_visuals" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity duration-300"><FaInstagram size={17} /></a>
+                  <a href="https://www.facebook.com/izan.massi" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity duration-300"><FaFacebook size={17} /></a>
+                  <a href="https://behance.net/hichammanseur1" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity duration-300"><FaBehance size={17} /></a>
                 </div>
               </div>
             </div>

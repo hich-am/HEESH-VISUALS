@@ -41,7 +41,7 @@ export default function About() {
       >
         {stats.map((stat, i) => (
           <div key={i} className="flex flex-col">
-            <span className="text-3xl md:text-4xl font-sans font-bold text-accent leading-none mb-1">{stat.value}</span>
+            <span className="text-3xl md:text-4xl font-sans font-bold text-textMain leading-none mb-1">{stat.value}</span>
             <span className="text-xs uppercase tracking-[0.15em] text-textMuted font-medium mt-1">{stat.label}</span>
           </div>
         ))}

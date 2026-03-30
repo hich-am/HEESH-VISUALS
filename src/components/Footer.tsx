@@ -14,17 +14,17 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="flex justify-center space-x-6 mb-8 text-textMuted">
-          <a href="https://instagram.com/heesh_visuals" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors duration-300">
+        <div className="flex justify-center space-x-6 mb-8 text-accent">
+          <a href="https://instagram.com/heesh_visuals" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity duration-300">
             <FaInstagram size={20} />
           </a>
-          <a href="https://www.facebook.com/izan.massi" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors duration-300">
+          <a href="https://www.facebook.com/izan.massi" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity duration-300">
             <FaFacebook size={20} />
           </a>
-          <a href="https://behance.net/hichammanseur1" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors duration-300">
+          <a href="https://behance.net/hichammanseur1" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity duration-300">
             <FaBehance size={20} />
           </a>
-          <a href="https://api.whatsapp.com/send/?phone=213676372031&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors duration-300">
+          <a href="https://api.whatsapp.com/send/?phone=213676372031&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity duration-300">
             <MessageCircle size={20} />
           </a>
         </div>

@@ -7,14 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#FFFFFF",
-        card: "#FFFFFF",
-        textMain: "#000000",
-        textMuted: "#555555", 
-        accent: "#0E7586",
-        accent2: "#A3B18A",
-        accent3: "#E9C46A",
-        borderLight: "#E5E5E5",
+        /* All tokens use CSS variable RGB triplets — opacity modifiers work correctly */
+        background:  'rgb(var(--color-bg) / <alpha-value>)',
+        card:        'rgb(var(--color-bg) / <alpha-value>)',
+        textMain:    'rgb(var(--color-text-main) / <alpha-value>)',
+        textMuted:   'rgb(var(--color-text-muted) / <alpha-value>)',
+        accent:      'rgb(var(--color-accent) / <alpha-value>)',
+        borderLight: 'rgb(var(--color-border) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['"Inter"', 'sans-serif'],

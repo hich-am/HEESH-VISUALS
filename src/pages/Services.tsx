@@ -56,7 +56,7 @@ export default function Services() {
               variants={itemVariants}
               className="card-style flex flex-col xl:flex-row items-start gap-5 group"
             >
-              <div className="w-12 h-12 shrink-0 rounded-xl bg-background border border-borderLight flex items-center justify-center group-hover:border-accent/30 group-hover:bg-accent/5 transition-colors duration-300">
+              <div className="w-12 h-12 shrink-0 rounded-xl bg-background border border-borderLight flex items-center justify-center group-hover:border-accent group-hover:bg-background transition-colors duration-300">
                 <Icon className="text-accent" size={22} strokeWidth={1.5} />
               </div>
               <div className="flex-1">

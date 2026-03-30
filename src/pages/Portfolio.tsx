@@ -37,13 +37,13 @@ function ProjectCard({ project, delay }: { project: typeof projects[0]; delay: n
         <div>
           {/* Serif title */}
           <p
-            className="text-[19px] font-medium leading-snug text-[#1a3336] group-hover:text-accent transition-colors duration-300"
+            className="text-[19px] font-medium leading-snug text-accent group-hover:text-accent transition-colors duration-300"
             style={{ fontFamily: "'DM Serif Display', Georgia, serif" }}
           >
             {project.title}
           </p>
           {/* Category */}
-          <p className="mt-1.5 text-[11px] uppercase tracking-[0.18em] font-medium text-[#6b8a8d]">
+          <p className="mt-1.5 text-[11px] uppercase tracking-[0.18em] font-medium text-textMuted">
             {project.category}
           </p>
         </div>
@@ -52,7 +52,7 @@ function ProjectCard({ project, delay }: { project: typeof projects[0]; delay: n
         <ArrowUpRight
           size={16}
           strokeWidth={1.5}
-          className="text-[#1a3336] mt-1 shrink-0 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
+          className="text-accent mt-1 shrink-0 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
         />
       </div>
     </motion.div>
