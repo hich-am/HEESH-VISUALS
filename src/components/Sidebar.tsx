@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Instagram, Linkedin, Github } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -76,9 +77,9 @@ const Sidebar = () => {
 
             {/* Social Icons */}
             <div className="flex items-center space-x-6 text-gray-500 mt-10">
-              <a href="#" className="hover:text-white transform hover:scale-110 transition-all duration-300"><Instagram size={20} /></a>
-              <a href="#" className="hover:text-white transform hover:scale-110 transition-all duration-300"><Linkedin size={20} /></a>
-              <a href="#" className="hover:text-white transform hover:scale-110 transition-all duration-300"><Github size={20} /></a>
+              <a href="#" className="hover:text-white transform hover:scale-110 transition-all duration-300"><FaInstagram size={20} /></a>
+              <a href="#" className="hover:text-white transform hover:scale-110 transition-all duration-300"><FaLinkedin size={20} /></a>
+              <a href="#" className="hover:text-white transform hover:scale-110 transition-all duration-300"><FaGithub size={20} /></a>
             </div>
           </motion.div>
         )}
