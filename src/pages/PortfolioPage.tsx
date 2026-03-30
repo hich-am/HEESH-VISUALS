@@ -53,11 +53,11 @@ export default function PortfolioPage() {
             </div>
 
             {/* Caption Section (Fixed thin bar, no horizontal separation between neighbors) */}
-            <div className="py-2 md:py-3 px-6 text-center bg-white flex flex-col justify-center">
-              <h3 className="text-sm md:text-[15px] text-[#1a3336] font-medium leading-tight uppercase tracking-tight">
+            <div className="py-2 md:py-2.5 px-6 text-center bg-white flex flex-col justify-center">
+              <h3 className="text-[11px] md:text-[13px] text-[#1a3336] font-light leading-none uppercase tracking-[0.1em]">
                 {project.title}
               </h3>
-              <p className="text-[8px] font-bold tracking-[0.25em] text-[#6b8a8d] uppercase leading-none mt-1">
+              <p className="text-[7px] font-bold tracking-[0.3em] text-[#6b8a8d] uppercase leading-none mt-1">
                 {project.category}
               </p>
             </div>
