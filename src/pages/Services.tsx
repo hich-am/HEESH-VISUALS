@@ -54,13 +54,15 @@ export default function Services() {
             <motion.div 
               key={index}
               variants={itemVariants}
-              className="card-style flex flex-col group"
+              className="card-style flex flex-col xl:flex-row items-start gap-5 group"
             >
-              <div className="w-12 h-12 rounded-xl bg-background border border-borderLight flex items-center justify-center mb-8 group-hover:border-accent/30 group-hover:bg-accent/5 transition-colors duration-300">
+              <div className="w-12 h-12 shrink-0 rounded-xl bg-background border border-borderLight flex items-center justify-center group-hover:border-accent/30 group-hover:bg-accent/5 transition-colors duration-300">
                 <Icon className="text-accent" size={22} strokeWidth={1.5} />
               </div>
-              <h3 className="text-lg font-medium mb-3 text-textMain">{service.title}</h3>
-              <p className="text-textMuted font-light leading-relaxed flex-1">{service.description}</p>
+              <div className="flex-1">
+                <h3 className="text-lg font-medium mb-2 text-textMain group-hover:text-accent transition-colors duration-300 leading-tight">{service.title}</h3>
+                <p className="text-textMuted font-light text-sm leading-relaxed">{service.description}</p>
+              </div>
             </motion.div>
           );
         })}
