@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { useEffect } from 'react';
 
 const mockProjects = [
+  { title: "32", category: "BRAND IDENTITY", image: "/PORTFOLIO/32.png" },
   { title: "43rd News Channel", category: "BRAND IDENTITY", image: "/PORTFOLIO/43rd News Channel.png" },
   { title: "Ahmed Fal Motel", category: "BRAND IDENTITY", image: "/PORTFOLIO/Ahmed Fal Motel.png" },
   { title: "Animal vet", category: "BRAND IDENTITY", image: "/PORTFOLIO/Animal vet.png" },
@@ -14,7 +15,9 @@ const mockProjects = [
   { title: "Dog", category: "BRAND IDENTITY", image: "/PORTFOLIO/Dog.png" },
   { title: "Elastic", category: "BRAND IDENTITY", image: "/PORTFOLIO/Elastic.png" },
   { title: "Elk", category: "BRAND IDENTITY", image: "/PORTFOLIO/Elk.png" },
+  { title: "Equine", category: "BRAND IDENTITY", image: "/PORTFOLIO/Equine.png" },
   { title: "Frenchy's Utensils", category: "BRAND IDENTITY", image: "/PORTFOLIO/Frenchy's Utensils.png" },
+  { title: "Hunt", category: "BRAND IDENTITY", image: "/PORTFOLIO/Hunt.png" },
   { title: "Kiddy Space", category: "BRAND IDENTITY", image: "/PORTFOLIO/Kiddy Space.png" },
   { title: "Melissa Fleuriste", category: "BRAND IDENTITY", image: "/PORTFOLIO/Melissa Fleuriste.png" },
   { title: "Mr. Drink", category: "BRAND IDENTITY", image: "/PORTFOLIO/Mr. Drink.png" },
@@ -22,6 +25,8 @@ const mockProjects = [
   { title: "Panda", category: "BRAND IDENTITY", image: "/PORTFOLIO/Panda.png" },
   { title: "Samir Coffee Shop", category: "BRAND IDENTITY", image: "/PORTFOLIO/Samir Coffee Shop.png" },
   { title: "Shawarma Master", category: "BRAND IDENTITY", image: "/PORTFOLIO/Shawarma Master.png" },
+  { title: "String House", category: "BRAND IDENTITY", image: "/PORTFOLIO/String House.png" },
+  { title: "Sushiro", category: "BRAND IDENTITY", image: "/PORTFOLIO/Sushiro.png" },
   { title: "Tennis", category: "BRAND IDENTITY", image: "/PORTFOLIO/Tennis.png" },
   { title: "Women's Music School", category: "BRAND IDENTITY", image: "/PORTFOLIO/Women's Music School.png" },
   { title: "Wood Shop", category: "BRAND IDENTITY", image: "/PORTFOLIO/Wood Shop.png" },
