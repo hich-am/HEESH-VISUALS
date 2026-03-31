@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 // Checkerboard rhythm:  landscape → portrait  /  portrait → landscape
 const projects: { title: string; category: string; aspect: "landscape" | "portrait"; image?: string }[] = [
-  { title: "Project Name", category: "Brand Identity & Packaging", aspect: "landscape" }, // top-left
-  { title: "Project Name", category: "Digital Publication", aspect: "portrait" }, // top-right
-  { title: "Project Name", category: "Visual Identity", aspect: "portrait" }, // bottom-left
+  { title: "Antler", category: "Brand Identity & Packaging", aspect: "landscape", image: "/Clothes.png" }, // top-left
+  { title: "Busy Bee", category: "Modeling", aspect: "portrait", image: "/bee clothes.png" }, // top-right
+  { title: "Sushi", category: "Brand & Packaging", aspect: "portrait", image: "/sushi.png" }, // bottom-left
   { title: "May Corner Restaurant", category: "Restaurant Menu Design", aspect: "landscape", image: "/Menu.png" }, // bottom-right
 ];
 
