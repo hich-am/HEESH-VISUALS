@@ -3,15 +3,28 @@ import { ArrowUpRight } from 'lucide-react';
 import { useEffect } from 'react';
 
 const mockProjects = [
-  { title: "Project Alpha", category: "BRAND IDENTITY" },
-  { title: "Project Beta", category: "UI/UX DESIGN" },
-  { title: "Project Gamma", category: "GRAPHIC DESIGN" },
-  { title: "Project Delta", category: "BRAND IDENTITY" },
-  { title: "Project Epsilon", category: "PACKAGING" },
-  { title: "Project Zeta", category: "WEB DESIGN" },
-  { title: "Project Eta", category: "BRAND IDENTITY" },
-  { title: "Project Theta", category: "PHOTOGRAPHY" },
-  { title: "Project Iota", category: "REBRAND" },
+  { title: "43rd News Channel", category: "BRAND IDENTITY", image: "/PORTFOLIO/43rd News Channel.png" },
+  { title: "Ahmed Fal Motel", category: "BRAND IDENTITY", image: "/PORTFOLIO/Ahmed Fal Motel.png" },
+  { title: "Animal vet", category: "BRAND IDENTITY", image: "/PORTFOLIO/Animal vet.png" },
+  { title: "Birdy Quotes", category: "BRAND IDENTITY", image: "/PORTFOLIO/Birdy Quotes.png" },
+  { title: "Buddy Baker", category: "BRAND IDENTITY", image: "/PORTFOLIO/Buddy Baker.png" },
+  { title: "Busy Bee", category: "BRAND IDENTITY", image: "/PORTFOLIO/Busy Bee.png" },
+  { title: "Cat", category: "BRAND IDENTITY", image: "/PORTFOLIO/Cat.png" },
+  { title: "Chameleon", category: "BRAND IDENTITY", image: "/PORTFOLIO/Chameleon.png" },
+  { title: "Dog", category: "BRAND IDENTITY", image: "/PORTFOLIO/Dog.png" },
+  { title: "Elastic", category: "BRAND IDENTITY", image: "/PORTFOLIO/Elastic.png" },
+  { title: "Elk", category: "BRAND IDENTITY", image: "/PORTFOLIO/Elk.png" },
+  { title: "Frenchy's Utensils", category: "BRAND IDENTITY", image: "/PORTFOLIO/Frenchy's Utensils.png" },
+  { title: "Kiddy Space", category: "BRAND IDENTITY", image: "/PORTFOLIO/Kiddy Space.png" },
+  { title: "Melissa Fleuriste", category: "BRAND IDENTITY", image: "/PORTFOLIO/Melissa Fleuriste.png" },
+  { title: "Mr. Drink", category: "BRAND IDENTITY", image: "/PORTFOLIO/Mr. Drink.png" },
+  { title: "Open Lock", category: "BRAND IDENTITY", image: "/PORTFOLIO/Open Lock.png" },
+  { title: "Panda", category: "BRAND IDENTITY", image: "/PORTFOLIO/Panda.png" },
+  { title: "Samir Coffee Shop", category: "BRAND IDENTITY", image: "/PORTFOLIO/Samir Coffee Shop.png" },
+  { title: "Shawarma Master", category: "BRAND IDENTITY", image: "/PORTFOLIO/Shawarma Master.png" },
+  { title: "Tennis", category: "BRAND IDENTITY", image: "/PORTFOLIO/Tennis.png" },
+  { title: "Women's Music School", category: "BRAND IDENTITY", image: "/PORTFOLIO/Women's Music School.png" },
+  { title: "Wood Shop", category: "BRAND IDENTITY", image: "/PORTFOLIO/Wood Shop.png" },
 ];
 
 export default function PortfolioPage() {
@@ -36,12 +49,16 @@ export default function PortfolioPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: i * 0.1 }}
-            className="flex flex-col aspect-[3/4] border-b md:border-b-0 border-borderLight"
+            className="flex flex-col aspect-square border-b md:border-b-0 border-borderLight"
           >
             {/* Image Section (Vertical separator stays here) */}
-            <div className={`flex-1 relative bg-[#E8E8E8] overflow-hidden group/tile border-b border-borderLight ${(i + 1) % 3 !== 0 ? 'md:border-r' : ''}`}>
-              {/* Placeholder for project image */}
-              <div className="w-full h-full bg-gradient-to-br from-[#F5F5F5] to-[#DCDCDC] transition-transform duration-700 group-hover/tile:scale-105" />
+            <div className={`flex-1 relative bg-white overflow-hidden group/tile border-b border-borderLight ${(i + 1) % 3 !== 0 ? 'md:border-r' : ''}`}>
+              {/* Project Image */}
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover/tile:scale-105" 
+              />
               
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover/tile:bg-black/5 transition-all duration-500" />
@@ -65,8 +82,8 @@ export default function PortfolioPage() {
         ))}
         {/* Fill the grid if items aren't a multiple of 3 */}
         {mockProjects.length % 3 !== 0 && Array.from({ length: 3 - (mockProjects.length % 3) }).map((_, i) => (
-          <div key={`empty-${i}`} className="hidden md:flex flex-col aspect-[3/4] bg-white border-b md:border-b-0 border-borderLight uppercase font-bold tracking-widest text-[8px] text-[#D1D1D1] text-center">
-            <div className={`flex-1 bg-[#F9F9F9] ${ (mockProjects.length + i + 1) % 3 !== 0 ? 'md:border-r' : '' } border-b border-borderLight`} />
+          <div key={`empty-${i}`} className="hidden md:flex flex-col aspect-square bg-white border-b md:border-b-0 border-borderLight uppercase font-bold tracking-widest text-[8px] text-[#D1D1D1] text-center">
+            <div className={`flex-1 bg-white ${ (mockProjects.length + i + 1) % 3 !== 0 ? 'md:border-r' : '' } border-b border-borderLight`} />
             <div className="py-2 md:py-3 px-6" />
           </div>
         ))}
