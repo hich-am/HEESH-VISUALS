@@ -3,17 +3,17 @@ import { ArrowUpRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Checkerboard rhythm:  landscape → portrait  /  portrait → landscape
-const projects: { title: string; category: string; aspect: "landscape" | "portrait" }[] = [
-  { title: "Project Name", category: "Brand Identity & Packaging",  aspect: "landscape" }, // top-left
-  { title: "Project Name", category: "Digital Publication",          aspect: "portrait"  }, // top-right
-  { title: "Project Name", category: "Visual Identity",              aspect: "portrait"  }, // bottom-left
-  { title: "Project Name", category: "Exhibition Branding",          aspect: "landscape" }, // bottom-right
+const projects: { title: string; category: string; aspect: "landscape" | "portrait"; image?: string }[] = [
+  { title: "Project Name", category: "Brand Identity & Packaging", aspect: "landscape" }, // top-left
+  { title: "Project Name", category: "Digital Publication", aspect: "portrait" }, // top-right
+  { title: "Project Name", category: "Visual Identity", aspect: "portrait" }, // bottom-left
+  { title: "May Corner Restaurant", category: "Restaurant Menu Design", aspect: "landscape", image: "/Menu.png" }, // bottom-right
 ];
 
 // landscape ≈ 16:10   portrait ≈ 4:5
 const aspectClass = {
   landscape: "aspect-[16/10]",
-  portrait:  "aspect-[4/5]",
+  portrait: "aspect-[4/5]",
 };
 
 function ProjectCard({ project, delay }: { project: typeof projects[0]; delay: number }) {
@@ -26,10 +26,17 @@ function ProjectCard({ project, delay }: { project: typeof projects[0]; delay: n
     >
       {/* Image placeholder */}
       <div
-        className={`w-full ${aspectClass[project.aspect]} rounded-none overflow-hidden bg-[#E2E2E2]`}
+        className={`w-full ${aspectClass[project.aspect]} rounded-none overflow-hidden bg-[#E2E2E2] relative`}
       >
-        {/* Replace the div below with <img> when ready */}
-        <div className="w-full h-full bg-gradient-to-br from-[#E8E8E8] to-[#D4D4D4]" />
+        {project.image ? (
+          <img 
+            src={project.image} 
+            alt={project.title} 
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-[#E8E8E8] to-[#D4D4D4]" />
+        )}
       </div>
 
       {/* Caption */}
@@ -61,7 +68,7 @@ function ProjectCard({ project, delay }: { project: typeof projects[0]; delay: n
 
 export default function Portfolio() {
   const navigate = useNavigate();
-  const leftCards  = [projects[0], projects[2]]; // landscape, portrait
+  const leftCards = [projects[0], projects[2]]; // landscape, portrait
   const rightCards = [projects[1], projects[3]]; // portrait, landscape
 
   return (

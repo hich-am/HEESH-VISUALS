@@ -50,7 +50,7 @@ const Sidebar = () => {
     <>
       {/* Mobile Hamburger Header */}
       <div className="md:hidden fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-borderLight p-4 flex justify-between items-center transition-colors">
-        <button 
+        <button
           onClick={() => {
             if (location.pathname === '/') {
               scroller.scrollTo('home', { smooth: true, duration: 800 });
@@ -70,7 +70,7 @@ const Sidebar = () => {
       {/* Sidebar Content */}
       <AnimatePresence>
         {(isOpen || !isMobile) && (
-          <motion.div 
+          <motion.div
             initial={isMobile ? { x: -300 } : false}
             animate={{ x: 0 }}
             exit={{ x: -300 }}
@@ -145,7 +145,7 @@ const Sidebar = () => {
 
       {/* Overlay for mobile */}
       {isOpen && (
-        <div 
+        <div
           className="md:hidden fixed inset-0 bg-textMain/20 backdrop-blur-sm z-30"
           onClick={() => setIsOpen(false)}
         />
