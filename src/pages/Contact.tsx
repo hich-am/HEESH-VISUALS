@@ -1,8 +1,20 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
 import { FaInstagram, FaFacebook, FaBehance } from 'react-icons/fa';
+import { useState } from 'react';
 
 export default function Contact() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSend = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:heeshdesign@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <div className="section-padding">
       <motion.div
@@ -84,20 +96,20 @@ export default function Contact() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="card-style h-fit"
         >
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSend}>
             <div>
-              <label className="label-text mb-3 block">Name</label>
-              <input type="text" className="w-full bg-background border border-borderLight rounded-xl p-4 text-textMain focus:outline-none focus:border-accent/40 focus:bg-white transition-colors font-light" placeholder="John Doe" />
+              <label htmlFor="name" className="label-text mb-3 block">Name</label>
+              <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required className="w-full bg-background border border-borderLight rounded-xl p-4 text-textMain focus:outline-none focus:border-accent/40 focus:bg-white transition-colors font-light" placeholder="Your Name" />
             </div>
             <div>
-              <label className="label-text mb-3 block">Email</label>
-              <input type="email" className="w-full bg-background border border-borderLight rounded-xl p-4 text-textMain focus:outline-none focus:border-accent/40 focus:bg-white transition-colors font-light" placeholder="john@example.com" />
+              <label htmlFor="email" className="label-text mb-3 block">Email</label>
+              <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full bg-background border border-borderLight rounded-xl p-4 text-textMain focus:outline-none focus:border-accent/40 focus:bg-white transition-colors font-light" placeholder="e-mail Address" />
             </div>
             <div>
-              <label className="label-text mb-3 block">Message</label>
-              <textarea rows={5} className="w-full bg-background border border-borderLight rounded-xl p-4 text-textMain focus:outline-none focus:border-accent/40 focus:bg-white transition-colors resize-none font-light" placeholder="Tell us about your project..."></textarea>
+              <label htmlFor="message" className="label-text mb-3 block">Message</label>
+              <textarea id="message" rows={5} value={message} onChange={(e) => setMessage(e.target.value)} required className="w-full bg-background border border-borderLight rounded-xl p-4 text-textMain focus:outline-none focus:border-accent/40 focus:bg-white transition-colors resize-none font-light" placeholder="Tell us about your project..."></textarea>
             </div>
-            <button type="button" className="w-full flex justify-center items-center space-x-3 bg-textMain text-white font-medium rounded-xl py-4 hover:bg-black transition-colors duration-300">
+            <button type="submit" className="w-full flex justify-center items-center space-x-3 bg-textMain text-white font-medium rounded-xl py-4 hover:bg-black transition-colors duration-300">
               <span>Send Message</span>
               <Send className="w-4 h-4" strokeWidth={1.5} />
             </button>
