@@ -42,10 +42,18 @@ const mockProjects = [
 export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState<'logos' | 'websites'>('logos');
 
-  // Scroll to top on mount
+  // Scroll to top and preload images on mount
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    
+    // Preload all portfolio images for smooth tab switching
+    mockProjects.forEach((project) => {
+      if (project.image) {
+        const img = new Image();
+        img.src = project.image;
+      }
+    });
   }, []);
 
   const displayProjects = mockProjects.filter((p) => p.type === activeTab);
