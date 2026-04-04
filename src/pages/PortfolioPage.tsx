@@ -1,40 +1,42 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const mockProjects = [
-  { title: "32", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/32.png" },
-  { title: "43rd News Channel", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/43rd News Channel.png" },
-  { title: "Ahmed Fal Motel", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Ahmed Fal Motel.png" },
-  { title: "Animal vet", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Animal vet.png" },
-  { title: "Birdy Quotes", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Birdy Quotes.png" },
-  { title: "Buddy Baker", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Buddy Baker.png" },
-  { title: "Busy Bee", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Busy Bee.png" },
-  { title: "Cat", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Cat.png" },
-  { title: "Chameleon", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Chameleon.png" },
-  { title: "Dog", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Dog.png" },
-  { title: "Elastic", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Elastic.png" },
-  { title: "Elk", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Elk.png" },
-  { title: "Equine", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Equine.png" },
-  { title: "Frenchy's Utensils", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Frenchy's Utensils.png" },
-  { title: "Hunt", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Hunt.png" },
-  { title: "Kiddy Space", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Kiddy Space.png" },
-  { title: "Melissa Fleuriste", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Melissa Fleuriste.png" },
-  { title: "Mr. Drink", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Mr. Drink.png" },
-  { title: "Open Lock", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Open Lock.png" },
-  { title: "Panda", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Panda.png" },
-  { title: "Samir Coffee Shop", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Samir Coffee Shop.png" },
-  { title: "Shawarma Master", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Shawarma Master.png" },
-  { title: "String House", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/String House.png" },
-  { title: "Sushiro", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Sushiro.png" },
-  { title: "Tennis", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Tennis.png" },
-  { title: "Women's Music School", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Women's Music School.png" },
-  { title: "Wood Shop", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Wood Shop.png" },
-  { title: "Heesh Visual", category: "BRAND Website", type: "websites", image: "/PORTFOLIO/web/heeshvisuals.png" },
-  { title: "Steve Temimi", category: "Model Portfolio Website", type: "websites", image: "/PORTFOLIO/web/steve.png" },
-  { title: "Rania Omari", category: "Model Portfolio Website", type: "websites", image: "/PORTFOLIO/web/rania.png" },
-  { title: "Mohcene", category: "Model Portfolio Website", type: "websites", image: "/PORTFOLIO/web/mohcene.png" },
-  { title: "Silem Kelvin", category: "Model Portfolio Website", type: "websites", image: "/PORTFOLIO/web/silem.png" },
+  { title: "32", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/32.png", link: "" },
+  { title: "43rd News Channel", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/43rd News Channel.png", link: "" },
+  { title: "Ahmed Fal Motel", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Ahmed Fal Motel.png", link: "" },
+  { title: "Animal vet", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Animal vet.png", link: "" },
+  { title: "Birdy Quotes", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Birdy Quotes.png", link: "" },
+  { title: "Buddy Baker", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Buddy Baker.png", link: "" },
+  { title: "Busy Bee", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Busy Bee.png", link: "" },
+  { title: "Cat", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Cat.png", link: "" },
+  { title: "Chameleon", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Chameleon.png", link: "" },
+  { title: "Dog", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Dog.png", link: "" },
+  { title: "Elastic", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Elastic.png", link: "" },
+  { title: "Elk", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Elk.png", link: "" },
+  { title: "Equine", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Equine.png", link: "" },
+  { title: "Frenchy's Utensils", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Frenchy's Utensils.png", link: "" },
+  { title: "Hunt", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Hunt.png", link: "" },
+  { title: "Kiddy Space", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Kiddy Space.png", link: "" },
+  { title: "Melissa Fleuriste", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Melissa Fleuriste.png", link: "" },
+  { title: "Mr. Drink", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Mr. Drink.png", link: "" },
+  { title: "Open Lock", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Open Lock.png", link: "" },
+  { title: "Panda", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Panda.png", link: "" },
+  { title: "Samir Coffee Shop", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Samir Coffee Shop.png", link: "" },
+  { title: "Shawarma Master", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Shawarma Master.png", link: "" },
+  { title: "String House", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/String House.png", link: "" },
+  { title: "Sushiro", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Sushiro.png", link: "" },
+  { title: "Tennis", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Tennis.png", link: "" },
+  { title: "Women's Music School", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Women's Music School.png", link: "" },
+  { title: "Wood Shop", category: "BRAND IDENTITY", type: "logos", image: "/PORTFOLIO/logos/Wood Shop.png", link: "" },
+  { title: "Heesh Visual", category: "BRAND Website", type: "websites", image: "/PORTFOLIO/web/heeshvisuals.png", link: "https://heeshvisuals.vercel.app" },
+  { title: "Bidjed Belmeliani", category: "Model Portfolio Website", type: "websites", image: "/PORTFOLIO/web/bidjed.png", link: "https://bidjedblm.vercel.app" },
+  { title: "Rania Omari", category: "Model Portfolio Website", type: "websites", image: "/PORTFOLIO/web/rania.png", link: "https://raniaomari.vercel.app" },
+  { title: "Mohcene Medjadji", category: "Photographer/Model Portfolio Website", type: "websites", image: "/PORTFOLIO/web/mohcene.png", link: "https://mohcenemed.vercel.app" },
+  { title: "Rania Zargoun", category: "Model Portfolio Website", type: "websites", image: "/PORTFOLIO/web/raniaz.png", link: "https://raniazargoun.vercel.app" },
+  { title: "Steve Temimi", category: "Model Portfolio Website", type: "websites", image: "/PORTFOLIO/web/steve.png", link: "" },
+  { title: "Silem Kelvin", category: "Model Portfolio Website", type: "websites", image: "/PORTFOLIO/web/silem.png", link: "" },
+
 ];
 
 export default function PortfolioPage() {
@@ -93,21 +95,27 @@ export default function PortfolioPage() {
                 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover/tile:bg-black/5 transition-all duration-500" />
-                
-                {/* Floating Arrow */}
-                <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-white opacity-0 translate-y-4 group-hover/tile:opacity-100 group-hover/tile:translate-y-0 transition-all duration-500 flex items-center justify-center shadow-xl">
-                  <ArrowUpRight size={18} className="text-textMain" />
-                </div>
               </div>
 
               {/* Caption Section (Fixed thin bar, no horizontal separation between neighbors) */}
-              <div className="py-2 md:py-2.5 px-6 text-center bg-white flex flex-col justify-center">
+              <div className="py-2 md:py-2.5 px-6 text-center bg-white flex flex-col justify-center items-center">
                 <h3 className="text-[11px] md:text-[13px] text-accent font-light leading-none uppercase tracking-[0.1em]">
                   {project.title}
                 </h3>
-                <p className="text-[7px] font-bold tracking-[0.3em] text-textMuted uppercase leading-none mt-1">
+                <p className="text-[7px] font-bold tracking-[0.3em] text-textMuted uppercase leading-none mt-1 mb-2">
                   {project.category}
                 </p>
+                
+                {activeTab === 'websites' && (
+                  <a 
+                    href={project.link || '#'} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="mt-1 px-4 py-1.5 border border-accent/20 text-accent text-[8px] uppercase tracking-[0.2em] font-bold hover:bg-accent hover:text-white hover:border-accent transition-all duration-500 rounded-full"
+                  >
+                    Visit Website
+                  </a>
+                )}
               </div>
             </motion.div>
           ))
