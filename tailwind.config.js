@@ -7,14 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg:          '#F5F5F0',
-        surface:     '#EAEAEA',
-        surfaceAlt:  '#E0E0E0',
-        textMain:    '#0A0A0A',
-        textMuted:   '#6B6B6B',
-        textDim:     '#9CA3AF',
-        borderLight: '#E5E5E5',
-        borderMid:   '#D4D4D4',
+        bg:          '#FFFFFF',
+        surface:     '#F5F5F5',
+        surfaceAlt:  '#EBEBEB',
+        textMain:    '#000000',
+        textMuted:   '#555555',
+        textDim:     '#888888',
+        borderLight: '#E0E0E0',
+        borderMid:   '#CCCCCC',
         accent:      '#000000',
       },
       fontFamily: {

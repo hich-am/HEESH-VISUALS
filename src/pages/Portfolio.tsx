@@ -98,11 +98,6 @@ function ProjectItem({
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             />
 
-            <motion.div
-              className="absolute inset-0 bg-bg/20"
-              animate={{ opacity: isHovered ? 0 : 1 }}
-              transition={{ duration: 0.5 }}
-            />
           </motion.div>
         </div>
       </div>

@@ -113,7 +113,7 @@ export default function PortfolioPage() {
               alt={project.title}
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
             />
-            <div className="absolute inset-0 bg-bg/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
               <h3 className="text-lg font-sans font-bold uppercase text-textMain tracking-tight">
                 {project.title}
               </h3>
