@@ -53,9 +53,9 @@ function ProjectItem({
       <div className="section-padding py-12 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
         <div className={`${isEven ? 'md:col-span-5 md:col-start-1' : 'md:col-span-5 md:col-start-8 md:row-start-1'} relative z-10`}>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="text-xs font-sans tracking-[0.3em] uppercase text-textDim block mb-4">
               {String(index + 1).padStart(2, '0')} / {project.year}
@@ -72,9 +72,9 @@ function ProjectItem({
 
           <motion.p
             className="text-sm font-sans tracking-[0.2em] uppercase text-textMuted"
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             {project.category}
           </motion.p>
@@ -83,9 +83,9 @@ function ProjectItem({
         <div className={`${isEven ? 'md:col-span-6 md:col-start-7' : 'md:col-span-6 md:col-start-1 md:row-start-1'} relative overflow-hidden`}>
           <motion.div
             className="aspect-[4/3] relative overflow-hidden bg-surface"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, x: isEven ? 100 : -100 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <motion.img
               src={project.image}
