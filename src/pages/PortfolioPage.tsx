@@ -37,10 +37,14 @@ const mockProjects = [
   { title: "Rania Zargoun", category: "MODEL PORTFOLIO", type: "websites", image: "/PORTFOLIO/web/raniaz.png", link: "https://raniazargoun.vercel.app" },
   { title: "Steve Temimi", category: "MODEL PORTFOLIO", type: "websites", image: "/PORTFOLIO/web/steve.png", link: "" },
   { title: "Silem Kelvin", category: "MODEL PORTFOLIO", type: "websites", image: "/PORTFOLIO/web/silem.png", link: "" },
+  { title: "Brand Identity Framework", category: "STRATEGY & DESIGN", type: "branding", image: "/PORTFOLIO/logos/32.png", link: "" },
+  { title: "Corporate Refresh", category: "BRAND EVOLUTION", type: "branding", image: "/PORTFOLIO/logos/Elastic.png", link: "" },
+  { title: "Instagram Grid Template", category: "CONTENT CREATION", type: "social media", image: "/PORTFOLIO/logos/Dog.png", link: "" },
+  { title: "Campaign Assets 2024", category: "DIGITAL MARKETING", type: "social media", image: "/PORTFOLIO/logos/Cat.png", link: "" },
 ];
 
 export default function PortfolioPage() {
-  const [activeTab, setActiveTab] = useState<'logos' | 'websites'>('logos');
+  const [activeTab, setActiveTab] = useState<'logos' | 'websites' | 'branding' | 'social media'>('logos');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -71,8 +75,8 @@ export default function PortfolioPage() {
           ARCHIVE
         </h1>
 
-        <div className="flex items-center gap-8 border-b border-borderLight pb-4">
-          {(['logos', 'websites'] as const).map((tab) => (
+        <div className="flex items-center gap-6 md:gap-8 border-b border-borderLight pb-4 overflow-x-auto whitespace-nowrap">
+          {(['logos', 'websites', 'branding', 'social media'] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
