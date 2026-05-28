@@ -1,66 +1,110 @@
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import RevealText from '../components/RevealText';
 
-// Checkerboard rhythm:  landscape → portrait  /  portrait → landscape
-const projects: { title: string; category: string; aspect: "landscape" | "portrait"; image?: string }[] = [
-  { title: "Antler", category: "Brand Identity & Packaging", aspect: "landscape", image: "/Clothes.png" }, // top-left
-  { title: "Busy Bee", category: "Modeling", aspect: "portrait", image: "/bee clothes.png" }, // top-right
-  { title: "Sushi", category: "Brand & Packaging", aspect: "portrait", image: "/sushi.png" }, // bottom-left
-  { title: "May Corner Restaurant", category: "Restaurant Menu Design", aspect: "landscape", image: "/Menu.png" }, // bottom-right
+const projects = [
+  {
+    title: 'ANTLER',
+    category: 'Brand Identity & Packaging',
+    image: '/Clothes.png',
+    year: '2024',
+  },
+  {
+    title: 'BUSY BEE',
+    category: 'Modeling & Fashion',
+    image: '/bee clothes.png',
+    year: '2024',
+  },
+  {
+    title: 'SUSHIRO',
+    category: 'Brand & Packaging Design',
+    image: '/sushi.png',
+    year: '2023',
+  },
+  {
+    title: 'MAY CORNER',
+    category: 'Restaurant Menu Design',
+    image: '/Menu.png',
+    year: '2023',
+  },
 ];
 
-// landscape ≈ 16:10   portrait ≈ 4:5
-const aspectClass = {
-  landscape: "aspect-[16/10]",
-  portrait: "aspect-[4/5]",
-};
+function ProjectItem({
+  project,
+  index,
+}: {
+  project: (typeof projects)[0];
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [isHovered, setIsHovered] = useState(false);
+  const isEven = index % 2 === 0;
 
-function ProjectCard({ project, delay }: { project: typeof projects[0]; delay: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay, ease: "easeOut" as const }}
-      className="group cursor-pointer w-full"
+      ref={ref}
+      className="relative border-b border-borderLight group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      data-cursor-hover
     >
-      {/* Image placeholder */}
-      <div
-        className={`w-full ${aspectClass[project.aspect]} rounded-none overflow-hidden bg-[#E2E2E2] relative`}
-      >
-        {project.image ? (
-          <img 
-            src={project.image} 
-            alt={project.title} 
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#E8E8E8] to-[#D4D4D4]" />
-        )}
-      </div>
+      <div className="section-padding py-12 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+        <div className={`${isEven ? 'md:col-span-5 md:col-start-1' : 'md:col-span-5 md:col-start-8 md:row-start-1'} relative z-10`}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <span className="text-xs font-sans tracking-[0.3em] uppercase text-textDim block mb-4">
+              {String(index + 1).padStart(2, '0')} / {project.year}
+            </span>
+          </motion.div>
 
-      {/* Caption */}
-      <div className="mt-4 flex items-start justify-between">
-        <div>
-          {/* Serif title */}
-          <p
-            className="text-[19px] font-medium leading-snug text-accent group-hover:text-accent transition-colors duration-300"
-            style={{ fontFamily: "'DM Serif Display', Georgia, serif" }}
+          <RevealText
+            as="h3"
+            className="text-display-lg font-sans font-bold uppercase text-textMain mb-4"
+            delay={0.2}
           >
             {project.title}
-          </p>
-          {/* Category */}
-          <p className="mt-1.5 text-[11px] uppercase tracking-[0.18em] font-medium text-textMuted">
+          </RevealText>
+
+          <motion.p
+            className="text-sm font-sans tracking-[0.2em] uppercase text-textMuted"
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
             {project.category}
-          </p>
+          </motion.p>
         </div>
 
-        {/* Arrow — aligned with title baseline */}
-        <ArrowUpRight
-          size={16}
-          strokeWidth={1.5}
-          className="text-accent mt-1 shrink-0 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
-        />
+        <div className={`${isEven ? 'md:col-span-6 md:col-start-7' : 'md:col-span-6 md:col-start-1 md:row-start-1'} relative overflow-hidden`}>
+          <motion.div
+            className="aspect-[4/3] relative overflow-hidden bg-surface"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <motion.img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover grayscale"
+              animate={{
+                scale: isHovered ? 1.05 : 1,
+                filter: isHovered ? 'grayscale(0%)' : 'grayscale(100%)',
+              }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            />
+
+            <motion.div
+              className="absolute inset-0 bg-bg/20"
+              animate={{ opacity: isHovered ? 0 : 1 }}
+              transition={{ duration: 0.5 }}
+            />
+          </motion.div>
+        </div>
       </div>
     </motion.div>
   );
@@ -68,70 +112,49 @@ function ProjectCard({ project, delay }: { project: typeof projects[0]; delay: n
 
 export default function Portfolio() {
   const navigate = useNavigate();
-  const leftCards = [projects[0], projects[2]]; // landscape, portrait
-  const rightCards = [projects[1], projects[3]]; // portrait, landscape
+  const headerRef = useRef<HTMLDivElement>(null);
+  const headerInView = useInView(headerRef, { once: true, margin: '-50px' });
 
   return (
-    <div className="section-padding overflow-x-hidden">
-      {/* Header - Constrained to standard width */}
-      <div className="max-w-[1200px] mx-auto">
+    <section className="relative bg-bg py-20 md:py-32">
+      <div ref={headerRef} className="section-padding mb-16 md:mb-24">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={headerInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-16 md:mb-20 max-w-3xl"
         >
-          <span className="label-text mb-6 block">Portfolio</span>
-          <h2 className="text-4xl md:text-5xl font-sans font-medium mb-6 leading-tight tracking-tight">Selected Work</h2>
-          <p className="text-xl text-textMuted font-light leading-relaxed">
-            A curated selection of brand identities, visual systems, and creative work — each one a story told through design.
-          </p>
+          <span className="label-text block mb-6">SELECTED WORK</span>
         </motion.div>
-      </div>
 
-      {/* Grid — Wider layout with larger gaps and wide horizontal padding */}
-      <div className="w-full px-6 md:px-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-20 md:gap-y-32">
-          {/* Left column */}
-          <div className="flex flex-col gap-y-20 md:gap-y-32">
-            {leftCards.map((p, i) => (
-              <ProjectCard key={i} project={p} delay={i * 0.1} />
-            ))}
-          </div>
-
-          {/* Right column offset down to create zig-zag rhythm */}
-          <div className="flex flex-col gap-y-20 md:gap-y-32 sm:mt-20 md:mt-32">
-            {rightCards.map((p, i) => (
-              <ProjectCard key={i} project={p} delay={i * 0.1 + 0.15} />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* CTA - Constrained to standard width */}
-      <div className="max-w-[1200px] mx-auto mt-24">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="flex justify-center"
+        <RevealText
+          as="h2"
+          className="text-display-md font-sans font-bold uppercase text-textMain"
         >
-          <button
-            onClick={() => {
-              navigate('/portfolio');
-              window.scrollTo(0, 0);
-            }}
-            className="group inline-flex items-center gap-3 px-10 py-4 rounded-full border border-textMain text-textMain font-medium text-sm hover:bg-textMain hover:text-white transition-all duration-300"
-          >
-            See full portfolio
-            <ArrowUpRight
-              size={16}
-              strokeWidth={1.5}
-              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
-            />
-          </button>
-        </motion.div>
+          PROJECTS
+        </RevealText>
       </div>
-    </div>
+
+      <div className="border-t border-borderLight">
+        {projects.map((project, i) => (
+          <ProjectItem key={i} project={project} index={i} />
+        ))}
+      </div>
+
+      <div className="section-padding mt-16 md:mt-24 flex justify-center">
+        <motion.button
+          onClick={() => {
+            navigate('/portfolio');
+            window.scrollTo(0, 0);
+          }}
+          className="group relative text-sm font-sans tracking-[0.3em] uppercase text-textMain transition-colors duration-500 py-4 px-8 border border-textDim hover:border-white animate-pulse-glow"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          data-cursor-hover
+        >
+          VIEW FULL ARCHIVE
+          <span className="absolute bottom-0 left-0 w-0 h-px bg-textMain group-hover:w-full transition-all duration-500" />
+        </motion.button>
+      </div>
+    </section>
   );
 }

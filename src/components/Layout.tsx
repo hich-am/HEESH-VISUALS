@@ -1,22 +1,31 @@
 import type { ReactNode } from 'react';
-import Sidebar from './Sidebar';
+import { useState } from 'react';
+import Navbar from './Navbar';
 import Footer from './Footer';
+import NoiseOverlay from './NoiseOverlay';
+import CustomCursor from './CustomCursor';
+import Preloader from './Preloader';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <div className="flex min-h-screen bg-background w-full text-textMain font-sans selection:bg-accent/20 selection:text-accent">
-      <Sidebar />
-      <main className="flex-1 w-full md:ml-[280px] mt-16 md:mt-0 relative flex flex-col">
-        <div className="w-full relative z-10 pb-16 flex-1">
+    <>
+      {!loaded && <Preloader onComplete={() => setLoaded(true)} />}
+      <div className={`min-h-screen bg-bg text-textMain font-body selection:bg-white/10 selection:text-white ${loaded ? '' : 'opacity-0'}`}>
+        <NoiseOverlay />
+        <CustomCursor />
+        <Navbar />
+        <main className="relative">
           {children}
-        </div>
+        </main>
         <Footer />
-      </main>
-    </div>
+      </div>
+    </>
   );
 };
 

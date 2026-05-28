@@ -2,49 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Design Tokens ────────────────────────────────────────────────────────── */
-:root {
-  /* Brand teal — used as RGB triplets so Tailwind opacity modifiers work */
-  --color-accent:      14 117 134;   /* #0E7586 */
-  --color-text-main:   0   0   0;    /* #000000 */
-  --color-text-muted:  85  85  85;   /* #555555 */
-  --color-bg:          255 255 255;  /* #FFFFFF */
-  --color-border:      229 229 229;  /* #E5E5E5 */
-}
-
 @layer base {
-  body {
-    @apply bg-background text-textMain overflow-x-hidden antialiased;
+  * {
+    cursor: none;
   }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #0A0A0A;
+  }
+
+  body {
+    @apply bg-bg text-textMain overflow-x-hidden antialiased font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-medium tracking-tight text-textMain;
+  }
+
+  ::selection {
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+  }
+
+  a, button {
+    cursor: none;
+  }
+}
+
+@layer components {
+  .brutalist-divider {
+    @apply w-full h-px bg-borderLight;
+  }
+
+  .brutalist-divider-thick {
+    @apply w-full h-[2px] bg-borderMid;
+  }
+
+  .label-text {
+    @apply text-xs font-sans font-medium tracking-[0.3em] uppercase text-textMuted;
+  }
+
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-20;
+  }
+
+  .oversized-index {
+    @apply text-[20vw] md:text-[15vw] font-sans font-bold leading-none text-borderLight select-none pointer-events-none;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
   }
 }
 
 @layer utilities {
-  .section-padding {
-    @apply py-4 md:py-6;
+  .text-balance {
+    text-wrap: balance;
   }
-  .card-style {
-    @apply bg-card rounded-2xl border border-borderLight shadow-[0_8px_30px_rgba(0,0,0,0.03)] p-8 md:p-10 transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)];
+
+  .grayscale-hover {
+    filter: grayscale(100%);
+    transition: filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  /* Label: always solid brand teal */
-  .label-text {
-    @apply text-[11px] font-bold tracking-[0.2em] uppercase text-accent;
+
+  .grayscale-hover:hover {
+    filter: grayscale(0%);
   }
+
+  .clip-inset-hidden {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  .clip-inset-visible {
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+/* Noise Grain Texture */
+.noise-overlay {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: grain 8s steps(10) infinite;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #F9F8F6;
+  background: #0A0A0A;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #E5E5E5;
-  border-radius: 4px;
+  background: #2A2A2A;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4D4D4;
+  background: #3A3A3A;
+}
+
+/* Smooth scrollbar for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2A2A2A #0A0A0A;
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Mobile: restore default cursor */
+@media (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
 }

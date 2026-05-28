@@ -1,84 +1,126 @@
-import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
-import { Link } from 'react-scroll';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import RevealText from '../components/RevealText';
 
 export default function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const videoOpacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 0]);
+  const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+
   return (
-    <div className="h-[100dvh] w-full flex flex-col justify-center relative overflow-hidden">
-      {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="w-full h-full object-cover"
-        >
-          <source src="/HOMEVIDEO.mp4" type="video/mp4" />
-        </video>
-        {/* Subtle dark overlay so white text remains readable against bright video segments */}
-        <div className="absolute inset-0 bg-black/30"></div>
+    <div ref={containerRef} className="relative h-[100dvh] w-full flex flex-col justify-center overflow-hidden bg-bg">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <motion.div style={{ opacity: videoOpacity }} className="w-full h-full">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover grayscale contrast-125"
+          >
+            <source src="/HOMEVIDEO.mp4" type="video/mp4" />
+          </video>
+        </motion.div>
+        <div className="absolute inset-0 bg-bg/70" />
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="max-w-4xl relative z-10 px-8 md:px-16"
+        style={{ y: titleY }}
+        className="relative z-10 section-padding"
       >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="label-text !text-white mb-8 inline-block drop-shadow-sm"
+          transition={{ delay: 2.5, duration: 1 }}
         >
-          Heesh Visuals Studio
+          <div className="mb-8">
+            <span className="label-text">HEESH VISUALS — CREATIVE STUDIO</span>
+          </div>
+
+          <div className="max-w-[90vw]">
+            <RevealText
+              as="h1"
+              className="text-display-xl font-sans font-bold uppercase text-textMain"
+              delay={2.6}
+            >
+              GRAPHIC
+            </RevealText>
+            <RevealText
+              as="h1"
+              className="text-display-xl font-sans font-bold uppercase text-textMain"
+              delay={2.75}
+            >
+              DESIGN &
+            </RevealText>
+            <RevealText
+              as="h1"
+              className="text-display-xl font-sans font-bold uppercase text-textMuted"
+              delay={2.9}
+            >
+              VISUAL
+            </RevealText>
+            <RevealText
+              as="h1"
+              className="text-display-xl font-sans font-bold uppercase text-textMuted"
+              delay={3.05}
+            >
+              SYSTEMS
+            </RevealText>
+          </div>
         </motion.div>
+      </motion.div>
 
-        <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-sans font-medium leading-[1.1] mb-8 text-white tracking-tight drop-shadow-sm">
-          Creative Strategies.<br />
-          <span className="text-gray-200 font-light">Powerful Visuals.</span>
-        </h1>
+      <motion.div
+        className="absolute bottom-8 left-0 right-0 z-10 section-padding flex items-end justify-between"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 3.5, duration: 1 }}
+      >
+        <div className="flex items-center gap-4 text-textMuted">
+          <motion.div
+            className="w-px bg-textMuted origin-top"
+            initial={{ height: 0 }}
+            animate={{ height: 40 }}
+            transition={{ delay: 3.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          />
+          <span className="text-xs font-sans tracking-[0.2em] uppercase">Scroll</span>
+        </div>
 
-        <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mb-16 leading-relaxed font-light drop-shadow-sm">
-          Empowering startups and businesses with smart, striking design solutions that make you stand out in the market.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-6 items-start">
-          <Link
-            to="portfolio"
-            spy={true}
-            smooth={true}
-            offset={-50}
-            duration={800}
-            className="cursor-pointer group flex items-center justify-center px-10 py-4 bg-white text-textMain font-medium rounded-full hover:bg-gray-100 transition-colors duration-300 shadow-lg"
-          >
-            Explore Work
-          </Link>
-          <Link
-            to="contact"
-            spy={true}
-            smooth={true}
-            offset={-50}
-            duration={800}
-            className="cursor-pointer group flex items-center justify-center px-10 py-4 bg-transparent border border-white/50 text-white font-medium rounded-full hover:border-white hover:bg-white/10 transition-colors duration-300 backdrop-blur-sm"
-          >
-            Get in touch
-          </Link>
+        <div className="text-right">
+          <p className="text-xs font-sans tracking-[0.2em] uppercase text-textMuted">
+            ALGIERS, DZ
+          </p>
         </div>
       </motion.div>
 
-      <motion.div 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1 }} 
-        transition={{ delay: 0.8, duration: 1 }}
-        className="absolute bottom-12 left-8 md:left-16 z-10"
-      >
-        <Link to="about" spy={true} smooth={true} offset={-50} duration={800} className="cursor-pointer flex flex-col items-center gap-3 text-white/80 hover:text-white transition-colors w-fit">
-          <span className="text-[10px] uppercase tracking-[0.2em] font-bold drop-shadow-sm">Scroll</span>
-          <ArrowDown size={18} strokeWidth={1.5} className="animate-bounce" />
-        </Link>
-      </motion.div>
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden z-10 border-t border-borderLight">
+        <motion.div
+          className="flex whitespace-nowrap py-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 3.2, duration: 0.8 }}
+        >
+          <div className="animate-marquee flex items-center">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <span key={i} className="text-xs font-sans tracking-[0.3em] uppercase text-textDim mx-4">
+                DESIGN&nbsp;&nbsp;•&nbsp;&nbsp;IDENTITY&nbsp;&nbsp;•&nbsp;&nbsp;DIGITAL&nbsp;&nbsp;•&nbsp;&nbsp;BRANDING&nbsp;&nbsp;•&nbsp;&nbsp;PACKAGING&nbsp;&nbsp;•&nbsp;&nbsp;VISUAL SYSTEMS&nbsp;&nbsp;•&nbsp;&nbsp;WEB&nbsp;&nbsp;•&nbsp;&nbsp;STRATEGY&nbsp;&nbsp;•&nbsp;&nbsp;
+              </span>
+            ))}
+          </div>
+          <div className="animate-marquee flex items-center" aria-hidden="true">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <span key={i} className="text-xs font-sans tracking-[0.3em] uppercase text-textDim mx-4">
+                DESIGN&nbsp;&nbsp;•&nbsp;&nbsp;IDENTITY&nbsp;&nbsp;•&nbsp;&nbsp;DIGITAL&nbsp;&nbsp;•&nbsp;&nbsp;BRANDING&nbsp;&nbsp;•&nbsp;&nbsp;PACKAGING&nbsp;&nbsp;•&nbsp;&nbsp;VISUAL SYSTEMS&nbsp;&nbsp;•&nbsp;&nbsp;WEB&nbsp;&nbsp;•&nbsp;&nbsp;STRATEGY&nbsp;&nbsp;•&nbsp;&nbsp;
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }

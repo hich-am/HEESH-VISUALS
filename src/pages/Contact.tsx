@@ -1,121 +1,87 @@
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
-import { FaInstagram, FaFacebook, FaBehance } from 'react-icons/fa';
-import { useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import RevealText from '../components/RevealText';
+import MagneticElement from '../components/MagneticElement';
 
 export default function Contact() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSend = (e: React.FormEvent) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-    window.location.href = `mailto:heeshdesign@gmail.com?subject=${subject}&body=${body}`;
-  };
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <div className="section-padding">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="mb-16 md:mb-24 max-w-3xl"
-      >
-        <span className="label-text mb-6 block">Inquiries</span>
-        <h2 className="text-4xl md:text-5xl font-sans font-medium mb-8 leading-tight tracking-tight">Get In Touch</h2>
-        <p className="text-xl text-textMuted font-light leading-relaxed">
-          Have a project in mind or just want to say hi? Feel free to reach out.
-        </p>
-      </motion.div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24">
+    <section ref={ref} className="relative bg-bg py-32 md:py-48">
+      <div className="section-padding">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8 }}
+          className="mb-6"
         >
-          <div className="space-y-12">
-            <div className="flex items-start space-x-6 group">
-              <div className="p-4 bg-white border border-borderLight rounded-2xl text-accent shrink-0 group-hover:bg-background transition-colors duration-300 shadow-sm">
-                <Mail className="w-5 h-5" strokeWidth={1.5} />
-              </div>
-              <div className="pt-1">
-                <h3 className="label-text mb-2">Email</h3>
-                <a href="mailto:heeshdesign@gmail.com" className="text-lg md:text-xl font-light hover:text-accent transition-colors text-textMain break-all">
-                  heeshdesign@gmail.com
-                </a>
-              </div>
-            </div>
+          <span className="label-text block">CONTACT</span>
+        </motion.div>
 
-            <div className="flex items-start space-x-6 group">
-              <div className="p-4 bg-white border border-borderLight rounded-2xl text-accent shrink-0 group-hover:bg-background transition-colors duration-300 shadow-sm">
-                <Phone className="w-5 h-5" strokeWidth={1.5} />
-              </div>
-              <div className="pt-1">
-                <h3 className="label-text mb-2">Phone</h3>
-                <a href="tel:+213676372031" className="text-lg md:text-xl font-light hover:text-accent transition-colors text-textMain">
-                  +213 676 372 031
-                </a>
-              </div>
-            </div>
+        <div className="h-px w-full bg-borderLight mb-16 md:mb-24" />
 
-            <div className="flex items-start space-x-6 group">
-              <div className="p-4 bg-white border border-borderLight rounded-2xl text-accent shrink-0 group-hover:bg-background transition-colors duration-300 shadow-sm">
-                <MapPin className="w-5 h-5" strokeWidth={1.5} />
-              </div>
-              <div className="pt-1">
-                <h3 className="label-text mb-2">Location</h3>
-                <p className="text-lg md:text-xl font-light text-textMain">
-                  Algiers, Algeria
-                </p>
-              </div>
-            </div>
-            
-            <div className="pt-8 border-t border-borderLight">
-              <h3 className="label-text mb-6">Connect & Messaging</h3>
-              <div className="flex flex-wrap items-center gap-4">
-                <a href="https://api.whatsapp.com/send/?phone=213676372031&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="py-3 px-5 bg-white border border-borderLight rounded-full hover:border-accent hover:text-accent transition-all flex items-center gap-3 text-textMuted shadow-sm hover:shadow-md">
-                  <MessageCircle className="w-4 h-4" strokeWidth={1.5} /> <span className="text-sm font-medium">WhatsApp</span>
-                </a>
-                <a href="https://instagram.com/heesh_visuals" target="_blank" rel="noopener noreferrer" className="p-3.5 bg-white border border-borderLight rounded-full text-textMuted hover:border-accent hover:text-accent transition-all shadow-sm hover:shadow-md"><FaInstagram className="w-4 h-4" /></a>
-                <a href="https://www.facebook.com/izan.massi" target="_blank" rel="noopener noreferrer" className="p-3.5 bg-white border border-borderLight rounded-full text-textMuted hover:border-accent hover:text-accent transition-all shadow-sm hover:shadow-md"><FaFacebook className="w-4 h-4" /></a>
-                <a href="https://behance.net/hichammanseur1" target="_blank" rel="noopener noreferrer" className="p-3.5 bg-white border border-borderLight rounded-full text-textMuted hover:border-accent hover:text-accent transition-all shadow-sm hover:shadow-md"><FaBehance className="w-4 h-4" /></a>
-              </div>
-            </div>
+        <div className="max-w-4xl">
+          <RevealText
+            as="h2"
+            className="text-display-md font-sans font-bold uppercase text-textMain mb-16 md:mb-24"
+            delay={0.1}
+          >
+            LET'S WORK TOGETHER
+          </RevealText>
+
+          <div className="space-y-8">
+            <MagneticElement strength={0.1} className="inline-block">
+              <motion.a
+                href="mailto:heeshdesign@gmail.com"
+                className="block text-2xl md:text-4xl lg:text-5xl font-sans font-medium text-textMuted hover:text-textMain transition-colors duration-500 tracking-tight group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.4 }}
+                data-cursor-hover
+              >
+                HEESHDESIGN@GMAIL.COM
+                <span className="block h-px bg-textDim group-hover:bg-textMain transition-colors duration-500 mt-2" />
+              </motion.a>
+            </MagneticElement>
+
+            <motion.a
+              href="tel:+213676372031"
+              className="block text-lg md:text-xl font-sans font-light text-textDim hover:text-textMuted transition-colors duration-500 tracking-wide"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              data-cursor-hover
+            >
+              +213 676 372 031
+            </motion.a>
           </div>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="card-style h-fit"
-        >
-          <form className="space-y-6" onSubmit={handleSend}>
-            <div>
-              <label htmlFor="name" className="label-text mb-3 block">Name</label>
-              <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required className="w-full bg-background border border-borderLight rounded-xl p-4 text-textMain focus:outline-none focus:border-accent/40 focus:bg-white transition-colors font-light" placeholder="Your Name" />
-            </div>
-            <div>
-              <label htmlFor="email" className="label-text mb-3 block">Email</label>
-              <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full bg-background border border-borderLight rounded-xl p-4 text-textMain focus:outline-none focus:border-accent/40 focus:bg-white transition-colors font-light" placeholder="e-mail Address" />
-            </div>
-            <div>
-              <label htmlFor="message" className="label-text mb-3 block">Message</label>
-              <textarea id="message" rows={5} value={message} onChange={(e) => setMessage(e.target.value)} required className="w-full bg-background border border-borderLight rounded-xl p-4 text-textMain focus:outline-none focus:border-accent/40 focus:bg-white transition-colors resize-none font-light" placeholder="Tell us about your project..."></textarea>
-            </div>
-            <button type="submit" className="w-full flex justify-center items-center space-x-3 bg-textMain text-white font-medium rounded-xl py-4 hover:bg-black transition-colors duration-300">
-              <span>Send Message</span>
-              <Send className="w-4 h-4" strokeWidth={1.5} />
-            </button>
-          </form>
-        </motion.div>
+          <div className="h-px w-full bg-borderLight mt-16 md:mt-24 mb-12" />
+
+          <motion.div
+            className="flex flex-wrap items-center gap-8"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            {[
+              { label: 'WhatsApp', href: 'https://api.whatsapp.com/send/?phone=213676372031&text&type=phone_number&app_absent=0' },
+              { label: 'Instagram', href: 'https://instagram.com/heesh_visuals' },
+              { label: 'Facebook', href: 'https://www.facebook.com/izan.massi' },
+              { label: 'Behance', href: 'https://behance.net/hichammanseur1' },
+            ].map((link, i) => (
+              <span key={link.label} className="flex items-center gap-8">
+                {i > 0 && <span className="text-textDim text-xs">—</span>}
+                <a href={link.href} target="_blank" rel="noopener noreferrer"
+                  className="text-sm font-sans tracking-[0.2em] uppercase text-textMuted hover:text-textMain transition-colors duration-300"
+                  data-cursor-hover
+                >{link.label}</a>
+              </span>
+            ))}
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
