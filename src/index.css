@@ -51,7 +51,7 @@
 
   .oversized-index {
     @apply text-[20vw] md:text-[15vw] font-sans font-bold leading-none text-borderLight select-none pointer-events-none;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.05);
   }
 }
 
