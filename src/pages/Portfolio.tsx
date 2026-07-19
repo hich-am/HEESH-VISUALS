@@ -48,7 +48,6 @@ function ProjectItem({
       className="relative border-b border-borderLight group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      data-cursor-hover
     >
       <div className="section-padding py-12 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
         <div className={`${isEven ? 'md:col-span-5 md:col-start-1' : 'md:col-span-5 md:col-start-8 md:row-start-1'} relative z-10`}>
@@ -143,7 +142,6 @@ export default function Portfolio() {
           className="group relative text-sm font-sans tracking-[0.3em] uppercase text-textMain transition-colors duration-500 py-4 px-8 border border-textDim hover:border-white animate-pulse-glow"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          data-cursor-hover
         >
           VIEW FULL ARCHIVE
           <span className="absolute bottom-0 left-0 w-0 h-px bg-textMain group-hover:w-full transition-all duration-500" />

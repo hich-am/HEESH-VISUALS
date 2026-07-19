@@ -66,7 +66,6 @@ export default function PortfolioPage() {
         <button
           onClick={() => navigate('/')}
           className="text-xs font-sans tracking-[0.2em] uppercase text-textMuted hover:text-textMain transition-colors mb-8 block"
-          data-cursor-hover
         >
           ← BACK
         </button>
@@ -83,7 +82,6 @@ export default function PortfolioPage() {
               className={`text-sm font-sans tracking-[0.25em] uppercase transition-colors duration-300 relative pb-2 ${
                 activeTab === tab ? 'text-textMain' : 'text-textMuted hover:text-textMain'
               }`}
-              data-cursor-hover
             >
               {tab}
               {activeTab === tab && (
@@ -110,7 +108,6 @@ export default function PortfolioPage() {
             } ${(i + 1) % 2 !== 0 ? 'md:border-r lg:border-r-0' : ''} ${
               (i + 1) % 3 !== 0 ? '' : ''
             } overflow-hidden`}
-            data-cursor-hover
           >
             <img
               src={project.image}

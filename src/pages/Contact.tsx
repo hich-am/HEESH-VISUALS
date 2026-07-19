@@ -38,7 +38,6 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.4 }}
-                data-cursor-hover
               >
                 HEESHDESIGN@GMAIL.COM
                 <span className="block h-px bg-textDim group-hover:bg-textMain transition-colors duration-500 mt-2" />
@@ -51,7 +50,6 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.5 }}
-              data-cursor-hover
             >
               +213 676 372 031
             </motion.a>
@@ -75,7 +73,6 @@ export default function Contact() {
                 {i > 0 && <span className="text-textDim text-xs">—</span>}
                 <a href={link.href} target="_blank" rel="noopener noreferrer"
                   className="text-sm font-sans tracking-[0.2em] uppercase text-textMuted hover:text-textMain transition-colors duration-300"
-                  data-cursor-hover
                 >{link.label}</a>
               </span>
             ))}

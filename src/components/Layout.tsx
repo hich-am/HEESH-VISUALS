@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import NoiseOverlay from './NoiseOverlay';
-import CustomCursor from './CustomCursor';
+
 import Preloader from './Preloader';
 
 interface LayoutProps {
@@ -18,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
       {!loaded && <Preloader onComplete={() => setLoaded(true)} />}
       <div className={`min-h-screen bg-bg text-textMain font-body selection:bg-white/10 selection:text-white ${loaded ? '' : 'opacity-0'}`}>
         <NoiseOverlay />
-        <CustomCursor />
+
         <Navbar />
         <main className="relative">
           {children}

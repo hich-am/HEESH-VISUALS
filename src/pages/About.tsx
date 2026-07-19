@@ -104,7 +104,6 @@ export default function About() {
               initial={{ opacity: 0, x: -20 }}
               animate={capInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              data-cursor-hover
             >
               <div className="flex items-center gap-6">
                 <span className="text-xs font-sans text-textDim tracking-[0.2em]">

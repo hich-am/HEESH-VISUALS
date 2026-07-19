@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    cursor: none;
-  }
+
 
   html {
     scroll-behavior: smooth;
@@ -27,9 +25,7 @@
     color: #000000;
   }
 
-  a, button {
-    cursor: none;
-  }
+
 }
 
 @layer components {
@@ -121,11 +117,4 @@
     linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
-}
-
-/* Mobile: restore default cursor */
-@media (pointer: coarse) {
-  * {
-    cursor: auto !important;
-  }
 }
