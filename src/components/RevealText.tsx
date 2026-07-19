@@ -7,6 +7,8 @@ interface RevealTextProps {
   delay?: number;
   as?: 'h1' | 'h2' | 'h3' | 'p' | 'span' | 'div';
   splitBy?: 'word' | 'line';
+  'data-text'?: string;
+  [key: string]: unknown;
 }
 
 export default function RevealText({
@@ -15,6 +17,8 @@ export default function RevealText({
   delay = 0,
   as: Tag = 'div',
   splitBy = 'word',
+  'data-text': dataText,
+  ...rest
 }: RevealTextProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -22,7 +26,7 @@ export default function RevealText({
   const words = splitBy === 'word' ? children.split(' ') : [children];
 
   return (
-    <Tag ref={ref as never} className={className}>
+    <Tag ref={ref as never} className={className} data-text={dataText} {...rest}>
       {words.map((word, i) => (
         <span key={i} className="inline-block overflow-hidden">
           <motion.span

@@ -70,6 +70,9 @@ export default {
           '50%': { boxShadow: '0 0 25px rgba(0, 0, 0, 0.3)' },
         },
       },
+      borderWidth: {
+        '3': '3px',
+      },
     },
   },
   plugins: [],

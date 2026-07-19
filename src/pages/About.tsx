@@ -31,7 +31,7 @@ export default function About() {
           <span className="label-text block">ABOUT</span>
         </motion.div>
 
-        <div className="h-px w-full bg-borderLight mb-16 md:mb-24" />
+        <div className="diagonal-divider mb-8 md:mb-16" />
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           <div className="md:col-span-7">
@@ -84,7 +84,7 @@ export default function About() {
         </motion.div>
       </div>
 
-      <div className="h-px w-full bg-borderLight mt-24 md:mt-32 mb-24 md:mb-32" />
+      <div className="diagonal-divider mt-16 md:mt-24 mb-16 md:mb-24" />
 
       <div ref={capRef} className="section-padding">
         <motion.div

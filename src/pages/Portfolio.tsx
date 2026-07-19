@@ -121,7 +121,8 @@ export default function Portfolio() {
 
         <RevealText
           as="h2"
-          className="text-display-md font-sans font-bold uppercase text-textMain"
+          className="text-display-md font-sans font-bold uppercase text-textMain glitch-text"
+          data-text="PROJECTS"
         >
           PROJECTS
         </RevealText>

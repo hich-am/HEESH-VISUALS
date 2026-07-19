@@ -19,13 +19,14 @@ export default function Contact() {
           <span className="label-text block">CONTACT</span>
         </motion.div>
 
-        <div className="h-px w-full bg-borderLight mb-16 md:mb-24" />
+        <div className="diagonal-divider mb-8 md:mb-16" />
 
         <div className="max-w-4xl">
           <RevealText
             as="h2"
-            className="text-display-md font-sans font-bold uppercase text-textMain mb-16 md:mb-24"
+            className="text-display-md font-sans font-bold uppercase text-textMain mb-16 md:mb-24 glitch-text"
             delay={0.1}
+            data-text="LET'S WORK TOGETHER"
           >
             LET'S WORK TOGETHER
           </RevealText>
@@ -55,7 +56,7 @@ export default function Contact() {
             </motion.a>
           </div>
 
-          <div className="h-px w-full bg-borderLight mt-16 md:mt-24 mb-12" />
+          <div className="diagonal-divider mt-8 md:mt-16 mb-8" />
 
           <motion.div
             className="flex flex-wrap items-center gap-8"

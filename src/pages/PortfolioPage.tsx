@@ -74,7 +74,7 @@ export default function PortfolioPage() {
           ARCHIVE
         </h1>
 
-        <div className="flex items-center gap-6 md:gap-8 border-b border-borderLight pb-4 overflow-x-auto whitespace-nowrap">
+        <div className="flex items-center gap-6 md:gap-8 border-b-2 border-textMain pb-4 overflow-x-auto whitespace-nowrap">
           {(['logos', 'websites', 'branding', 'social media'] as const).map((tab) => (
             <button
               key={tab}
@@ -96,18 +96,16 @@ export default function PortfolioPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-borderLight">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t-3 border-textMain">
         {displayProjects.map((project, i) => (
           <motion.div
             key={`${activeTab}-${i}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: (i % 6) * 0.05 }}
-            className={`group relative aspect-square border-b border-borderLight ${
-              (i + 1) % 3 !== 0 ? 'lg:border-r' : ''
-            } ${(i + 1) % 2 !== 0 ? 'md:border-r lg:border-r-0' : ''} ${
-              (i + 1) % 3 !== 0 ? '' : ''
-            } overflow-hidden`}
+            className={`group relative aspect-square border-b-2 border-textMain ${
+              (i + 1) % 3 !== 0 ? 'lg:border-r-2' : ''
+            } ${(i + 1) % 2 !== 0 ? 'md:border-r-2 lg:border-r-0' : ''} overflow-hidden`}
           >
             <img
               src={project.image}
