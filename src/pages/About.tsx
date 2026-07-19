@@ -37,8 +37,9 @@ export default function About() {
           <div className="md:col-span-7">
             <RevealText
               as="h2"
-              className="text-display-sm font-sans font-medium text-textMain leading-tight"
+              className="text-display-sm font-sans font-medium text-textMain leading-tight glitch-text"
               delay={0.1}
+              data-text="Design that doesn't follow trends — it sets them."
             >
               Design that doesn't follow trends — it sets them.
             </RevealText>
