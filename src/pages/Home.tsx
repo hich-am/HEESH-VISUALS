@@ -21,7 +21,7 @@ export default function Home() {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover grayscale contrast-125"
+            className="w-full h-full object-cover"
           >
             <source src="/HOMEVIDEO.mp4" type="video/mp4" />
           </video>

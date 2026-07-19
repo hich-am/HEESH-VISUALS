@@ -90,10 +90,9 @@ function ProjectItem({
             <motion.img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover grayscale"
+              className="w-full h-full object-cover"
               animate={{
                 scale: isHovered ? 1.05 : 1,
-                filter: isHovered ? 'grayscale(0%)' : 'grayscale(100%)',
               }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             />
